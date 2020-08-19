@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.seb</groupId>
+    <artifactId>akka.kamon</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>akka-kamon-example</name>
+
+    <properties>
+        <scala.base.version>2.13</scala.base.version>
+        <scala.version>${scala.base.version}.3</scala.version>
+        <kamon.version>2.1.4</kamon.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor-typed_${scala.base.version}</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.kamon</groupId>
+            <artifactId>kamon-akka_${scala.base.version}</artifactId>
+            <version>${kamon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.kamon</groupId>
+            <artifactId>kamon-influxdb_${scala.base.version}</artifactId>
+            <version>${kamon.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>4.4.0</version>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                    <args>
+                        <!--						<arg>-target:jvm-1.8</arg>-->
+                        <!--						<arg>-Xlint</arg>-->
+                        <!--						<arg>-deprecation</arg>-->
+                        <!--						<arg>-unchecked</arg>-->
+                        <arg>-feature</arg>
+                        <arg>-language:postfixOps</arg>
+                        <arg>-language:implicitConversions</arg>
+                        <arg>-language:higherKinds</arg>
+                        <!--						<arg>-Xfatal-warnings</arg>-->
+                        <!--						<arg>-Ywarn-inaccessible</arg>-->
+                        <!--						<arg>-Ywarn-dead-code</arg>-->
+                        <!--						<arg>-Ypartial-unification</arg>-->
+                    </args>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
